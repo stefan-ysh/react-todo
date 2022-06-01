@@ -8,7 +8,7 @@ import {
   CheckCircleOutlined,
   FieldTimeOutlined,
 } from "@ant-design/icons";
-import { Badge } from "antd";
+import { Badge, message } from "antd";
 
 const todoList: Array<TaskCategory> = [
   {
@@ -56,16 +56,20 @@ const list: Array<TaskItem> = [
 ];
 
 function TodoList() {
-  const [curItem, setCurItem] = useState({
-    title: "",
-    startTime: "",
-    description: "",
-    status: "",
-  });
+  const [curItem, setCurItem] = useState(undefined);
   const [todoItems, setTodoItems] = useState(list);
 
   // start moving
-  const handleStart = (t: any) => {
+  const handleStart = (e: any, t: any) => {
+    // can not change the status of the one once it has been completed
+    if (t.status === "done") {
+      message.info(
+        "This task has been completed , you can not change its status anymore."
+      );
+      return;
+    }
+    // transfer the status of current drag area
+    e.dataTransfer.setData("status", e.target.dataset.status);
     setCurItem(t);
   };
 
@@ -79,18 +83,47 @@ function TodoList() {
   };
 
   // drop item
-  const handleDrop = (t: any) => {
-    curItem.status = t.type;
-    setTodoItems([...list]);
+  const handleDrop = (e: any, t: { type: string }) => {
+    // get the status of current drag area
+    let status = e.dataTransfer.getData("status");
+    const { type } = t;
+    // do nothing if the status is the same
+    // todo maybe need to change the order of current list item
+    if (status === type) {
+      return;
+    }
+    // it is not allowed to change the status from done to todo
+    if (status === "doing" && type === "todo") {
+      message.info(
+        "You can not move a task from doing to todo if once it has been started"
+      );
+      return;
+    }
+    changeTaskStatus(curItem, type);
   };
 
-  // change the status of the current item to done
-  const checkRadio = (t: any) => {
+  // change the status of the current item
+  const changeTaskStatus = (t: any, type: string) => {
     let res = list.find((l) => {
       return l.title === t.title;
     });
-    res!.status = "done";
+    res!.status = type;
     setTodoItems([...list]);
+    switch (type) {
+      case "todo":
+        message.success("task moved to todo");
+        break;
+      case "doing":
+        message.success("start doing");
+        break;
+      case "done":
+        message.success("finish");
+        break;
+
+      default:
+        break;
+    }
+    setCurItem(undefined);
   };
   const isEmpty = (type: string) => {
     let res = list.find((l) => {
@@ -109,8 +142,8 @@ function TodoList() {
             <div
               key={k}
               className="todo-wrap-item"
-              onDrop={() => {
-                handleDrop(t);
+              onDrop={(e) => {
+                handleDrop(e, t);
               }}
               onDragOver={(e) => {
                 e.preventDefault();
@@ -124,8 +157,8 @@ function TodoList() {
             <div
               key={k}
               className="todo-wrap-item"
-              onDrop={() => {
-                handleDrop(t);
+              onDrop={(e) => {
+                handleDrop(e, t);
               }}
               onDragOver={(e) => {
                 e.preventDefault();
@@ -179,9 +212,10 @@ function TodoList() {
                 return (
                   <div
                     key={_k}
+                    data-status={_t.status}
                     draggable="true"
-                    onDragStart={() => {
-                      handleStart(_t);
+                    onDragStart={(e) => {
+                      handleStart(e, _t);
                     }}
                   >
                     <div
@@ -200,7 +234,7 @@ function TodoList() {
                         name="task"
                         checked={t.type === "done" ? true : false}
                         disabled={t.type === "done"}
-                        onChange={() => checkRadio(_t)}
+                        onChange={() => changeTaskStatus(_t, "done")}
                       ></input>
                       <div className="item">{_t.title}</div>
                       {/* <div className="item">start time:{_t.startTime}</div> */}

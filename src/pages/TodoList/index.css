@@ -40,6 +40,7 @@
   transition: all 0.5s;
   align-items: center;
   justify-content: flex-start;
+  border-radius: 5px;
 }
 .todo-item:hover,
 .done:hover {
@@ -60,18 +61,23 @@
   appearance: none;
   position: relative;
   margin-right: 10px;
+  border-radius: 50%;
 }
 .radio_type:before {
   content: "";
   width: 20px;
   height: 20px;
-  border: 1px solid #7d7d7d;
+  border: 2px solid #7d7d7d;
   display: inline-block;
   border-radius: 50%;
   vertical-align: middle;
   position: absolute;
   top: 0px;
   left: 0px;
+  cursor: pointer;
+}
+.radio_type:hover {
+  background-color: rgb(255, 255, 255);
 }
 .radio_type:checked:before {
   content: "";
