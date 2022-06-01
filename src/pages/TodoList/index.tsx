@@ -3,6 +3,13 @@ import { useState } from "react";
 import "./index.css";
 import { TaskItem, TaskCategory } from "./types/todo";
 import EmptyTip from "./components/empty";
+import {
+  ClockCircleOutlined,
+  CheckCircleOutlined,
+  FieldTimeOutlined,
+} from "@ant-design/icons";
+import { Badge } from "antd";
+
 const todoList: Array<TaskCategory> = [
   {
     type: "todo",
@@ -100,7 +107,7 @@ function TodoList() {
                 e.preventDefault();
               }}
             >
-              <EmptyTip type={t.type}>12</EmptyTip>
+              <EmptyTip type={t.type}></EmptyTip>
             </div>
           );
         } else {
@@ -115,10 +122,50 @@ function TodoList() {
                 e.preventDefault();
               }}
             >
-              <h1>
-                {t.type}
-                {computeNum(t.type)}
-              </h1>
+              <div className="title-wrap">
+                {t.type === "todo" && (
+                  <Badge count={computeNum(t.type)}>
+                    <ClockCircleOutlined
+                      style={{
+                        fontSize: "20px",
+                        color: "#fff",
+                        marginRight: "10px",
+                      }}
+                    />
+                    <span className="category-title">
+                      {t.type.toUpperCase()}
+                    </span>
+                  </Badge>
+                )}
+                {t.type === "done" && (
+                  <Badge count={computeNum(t.type)}>
+                    <CheckCircleOutlined
+                      style={{
+                        fontSize: "20px",
+                        color: "#fff",
+                        marginRight: "10px",
+                      }}
+                    />
+                    <span className="category-title">
+                      {t.type.toUpperCase()}
+                    </span>
+                  </Badge>
+                )}
+                {t.type === "doing" && (
+                  <Badge count={computeNum(t.type)}>
+                    <FieldTimeOutlined
+                      style={{
+                        fontSize: "20px",
+                        color: "#fff",
+                        marginRight: "10px",
+                      }}
+                    />
+                    <span className="category-title">
+                      {t.type.toUpperCase()}
+                    </span>
+                  </Badge>
+                )}
+              </div>
               {todoItems.map((_t: any, _k: number) => {
                 return (
                   <div
@@ -147,7 +194,7 @@ function TodoList() {
                           return false;
                         }}
                       ></input>
-                      <div className="item">title:{_t.title}</div>
+                      <div className="item">{_t.title}</div>
                       {/* <div className="item">start time:{_t.startTime}</div> */}
                     </div>
                   </div>
