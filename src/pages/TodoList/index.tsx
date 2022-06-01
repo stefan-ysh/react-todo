@@ -76,36 +76,50 @@ function TodoList() {
     curItem.status = t.type;
     setTodoItems([...list]);
   };
-  const isEmpty = (status: string) => {
+  const isEmpty = (type: string) => {
     let res = list.find((l) => {
-      return l.status === status;
+      return l.status === type;
     });
     if (res) {
-      return true;
+      return false;
     }
-    return false;
+    return true;
   };
   return (
     <div className="todo-list">
       {todoList.map((t: any, k: number) => {
-        return (
-          <div
-            key={k}
-            className="todo-wrap-item"
-            onDrop={() => {
-              handleDrop(t);
-            }}
-            onDragOver={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <h1>
-              {t.type}
-              {computeNum(t.type)}
-            </h1>
-
-            {todoItems.map((_t: any, _k: number) => {
-              if (isEmpty(t.type)) {
+        if (isEmpty(t.type)) {
+          return (
+            <div
+              key={k}
+              className="todo-wrap-item"
+              onDrop={() => {
+                handleDrop(t);
+              }}
+              onDragOver={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <EmptyTip type={t.type}>12</EmptyTip>
+            </div>
+          );
+        } else {
+          return (
+            <div
+              key={k}
+              className="todo-wrap-item"
+              onDrop={() => {
+                handleDrop(t);
+              }}
+              onDragOver={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <h1>
+                {t.type}
+                {computeNum(t.type)}
+              </h1>
+              {todoItems.map((_t: any, _k: number) => {
                 return (
                   <div
                     key={_k}
@@ -134,16 +148,14 @@ function TodoList() {
                         }}
                       ></input>
                       <div className="item">title:{_t.title}</div>
-                      <div className="item">start time:{_t.startTime}</div>
+                      {/* <div className="item">start time:{_t.startTime}</div> */}
                     </div>
                   </div>
                 );
-              } else {
-                return <EmptyTip></EmptyTip>;
-              }
-            })}
-          </div>
-        );
+              })}
+            </div>
+          );
+        }
       })}
     </div>
   );
