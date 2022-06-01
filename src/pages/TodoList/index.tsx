@@ -7,8 +7,9 @@ import {
   ClockCircleOutlined,
   CheckCircleOutlined,
   FieldTimeOutlined,
+  PlusOutlined,
 } from "@ant-design/icons";
-import { Badge, message } from "antd";
+import { Badge, message, Button, Modal, Form, Input, Checkbox } from "antd";
 
 const todoList: Array<TaskCategory> = [
   {
@@ -58,21 +59,17 @@ const list: Array<TaskItem> = [
 function TodoList() {
   const [curItem, setCurItem] = useState(undefined);
   const [todoItems, setTodoItems] = useState(list);
-
+  const [visible, setVisible] = useState(false);
+  const [newTaskTitle, setNewTaskTitle] = useState("");
   // start moving
   const handleStart = (e: any, t: any) => {
-    // can not change the status of the one once it has been completed
-    if (t.status === "done") {
-      message.info(
-        "This task has been completed , you can not change its status anymore."
-      );
-      return;
-    }
     // transfer the status of current drag area
     e.dataTransfer.setData("status", e.target.dataset.status);
     setCurItem(t);
   };
-
+  const showAddTaskModal = () => {
+    setVisible(true);
+  };
   // compute task num
   const computeNum = (type: string) => {
     let res = list.filter((l) => {
@@ -85,21 +82,27 @@ function TodoList() {
   // drop item
   const handleDrop = (e: any, t: { type: string }) => {
     // get the status of current drag area
-    let status = e.dataTransfer.getData("status");
-    const { type } = t;
+    let fromStatus = e.dataTransfer.getData("status");
+    const { type: targetStatus } = t;
     // do nothing if the status is the same
     // todo maybe need to change the order of current list item
-    if (status === type) {
+    if (fromStatus === targetStatus) {
       return;
     }
+    // can not change the status of the one once it has been completed
+    if (fromStatus === "done") {
+      return message.info(
+        "This task has been completed , you can not change its status anymore."
+      );
+    }
     // it is not allowed to change the status from done to todo
-    if (status === "doing" && type === "todo") {
+    if (fromStatus === "doing" && targetStatus === "todo") {
       message.info(
         "You can not move a task from doing to todo if once it has been started"
       );
       return;
     }
-    changeTaskStatus(curItem, type);
+    changeTaskStatus(curItem, targetStatus);
   };
 
   // change the status of the current item
@@ -133,6 +136,25 @@ function TodoList() {
       return false;
     }
     return true;
+  };
+
+  // handle create task
+  const handleCreateTask = () => {
+    const newTask: TaskItem = {
+      title: newTaskTitle,
+      startTime: "2022-05-15",
+      description: "",
+      status: "todo",
+    };
+    list.push(newTask);
+    setTodoItems([...list]);
+    setVisible(false);
+    setNewTaskTitle("");
+  };
+
+  // update the newTaskTitle when inputing the value
+  const inputNewTaskTitle = (e: any) => {
+    setNewTaskTitle(e.target.value);
   };
   return (
     <div className="todo-list">
@@ -246,6 +268,55 @@ function TodoList() {
           );
         }
       })}
+      {/* add task button */}
+      <Button
+        icon={
+          <PlusOutlined
+            style={{
+              fontSize: "20px",
+            }}
+          />
+        }
+        style={{
+          width: "40px",
+          height: "40px",
+          position: "absolute",
+          bottom: "10px",
+          right: "10px",
+          borderRadius: "50%",
+          textAlign: "center",
+          lineHeight: "40px",
+          padding: 0,
+        }}
+        type="primary"
+        onClick={showAddTaskModal}
+      ></Button>
+      <Modal
+        title="Create A New Task"
+        centered
+        visible={visible}
+        onOk={handleCreateTask}
+        onCancel={() => setVisible(false)}
+      >
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          initialValues={{ remember: true }}
+          autoComplete="off"
+        >
+          <Form.Item
+            label="Task Title"
+            name="taskTitle"
+            rules={[{ required: true, message: "Please input your username!" }]}
+          >
+            <Input
+              onChange={(e) => inputNewTaskTitle(e)}
+              value={newTaskTitle}
+            />
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 interface TaskItem {
   title: string;
-  startTime: Date | string;
+  startTime: Date | string | any;
   description: string;
   status: string;
 }
