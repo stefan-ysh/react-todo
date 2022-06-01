@@ -83,6 +83,15 @@ function TodoList() {
     curItem.status = t.type;
     setTodoItems([...list]);
   };
+
+  // change the status of the current item to done
+  const checkRadio = (t: any) => {
+    let res = list.find((l) => {
+      return l.title === t.title;
+    });
+    res!.status = "done";
+    setTodoItems([...list]);
+  };
   const isEmpty = (type: string) => {
     let res = list.find((l) => {
       return l.status === type;
@@ -177,22 +186,21 @@ function TodoList() {
                   >
                     <div
                       style={{
-                        display: _t.status === t.type ? "block" : "none",
+                        display: _t.status === t.type ? "flex" : "none",
                       }}
                       className={t.type === "done" ? "done" : "todo-item"}
                       key={_k}
                     >
                       <input
-                        style={{
-                          display: t.type === "done" ? "block" : "none",
-                        }}
+                        className="radio_type"
+                        // style={{
+                        //   display: t.type === "done" ? "block" : "none",
+                        // }}
                         type="checkbox"
-                        name="reading"
-                        checked
-                        disabled
-                        onChange={() => {
-                          return false;
-                        }}
+                        name="task"
+                        checked={t.type === "done" ? true : false}
+                        disabled={t.type === "done"}
+                        onChange={() => checkRadio(_t)}
                       ></input>
                       <div className="item">{_t.title}</div>
                       {/* <div className="item">start time:{_t.startTime}</div> */}
