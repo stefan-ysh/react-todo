@@ -1,0 +1,16 @@
+@import '~antd/dist/antd.css';
+.app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.app-top {
+  height: 60px;
+  width: 100%;
+}
+.app-bottom {
+  height: calc(100vh - 60px);
+  display: flex;
+}

@@ -1,0 +1,5 @@
+{
+  "rule": {
+    "jsx-no-lambda": false
+  }
+}
