@@ -19,6 +19,7 @@
 }
 .title-wrap {
   font-size: 20px;
+  user-select: none;
 }
 .category-title {
   font-size: 20px;
