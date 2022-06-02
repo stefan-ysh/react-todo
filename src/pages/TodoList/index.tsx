@@ -270,7 +270,7 @@ function TodoList() {
                         disabled={t.type === "done"}
                         onChange={() => changeTaskStatus(_t, "done")}
                       ></input>
-                      <div className="item">{_t.title}</div>
+                      <div className="item-title">{_t.title}</div>
                       {/* <div className="item">start time:{_t.startTime}</div> */}
                     </div>
                   </div>
