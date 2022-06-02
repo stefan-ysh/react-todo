@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./index.css";
 import { TaskItem, TaskCategory } from "./types/todo";
 import EmptyTip from "./components/empty";
+import { uuid } from "../../utils";
 import {
   ClockCircleOutlined,
   CheckCircleOutlined,
@@ -130,6 +131,7 @@ function TodoList() {
     }
     const newTask: TaskItem = {
       title: newTaskTitle,
+      id: uuid(),
       startTime: "2022-05-15",
       description: "",
       status: "todo",
