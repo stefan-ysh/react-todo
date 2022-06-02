@@ -82,6 +82,7 @@ function TodoList() {
 
   // drop item
   const handleDrop = (e: any, t: { type: string }) => {
+    setCurItem(undefined);
     message.destroy();
     // get the status of current drag area
     let fromStatus = e.dataTransfer.getData("status");
