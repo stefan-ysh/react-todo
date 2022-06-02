@@ -1,5 +1,5 @@
 /**eslint-disable */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./index.css";
 import { TaskItem, TaskCategory } from "./types/todo";
 import EmptyTip from "./components/empty";
@@ -24,44 +24,20 @@ const todoList: Array<TaskCategory> = [
   },
 ];
 
-const list: Array<TaskItem> = [
-  {
-    title: "laundry",
-    startTime: "2022-05-05",
-    description: "",
-    status: "todo",
-  },
-  {
-    title: "coding",
-    startTime: "2022-05-15",
-    description: "",
-    status: "doing",
-  },
-  {
-    title: "sleeping",
-    startTime: "2022-05-16",
-    description: "",
-    status: "todo",
-  },
-  {
-    title: "reading",
-    startTime: "2022-05-15",
-    description: "",
-    status: "todo",
-  },
-  {
-    title: "cooking",
-    startTime: "2022-05-15",
-    description: "",
-    status: "doing",
-  },
-];
+const list: Array<TaskItem> = JSON.parse(
+  localStorage.getItem("todoItems") || "[]"
+);
 
 function TodoList() {
   const [curItem, setCurItem] = useState(undefined);
   const [todoItems, setTodoItems] = useState(list);
   const [visible, setVisible] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("todoItems", JSON.stringify(todoItems));
+  }, [todoItems]);
+
   // start moving
   const handleStart = (e: any, t: any) => {
     // transfer the status of current drag area
@@ -225,37 +201,39 @@ function TodoList() {
                   </Badge>
                 )}
               </div>
-              {todoItems.map((_t: any, _k: number) => {
-                return (
-                  <div
-                    key={_k}
-                    data-status={_t.status}
-                    draggable="true"
-                    onDragStart={(e) => {
-                      handleStart(e, _t);
-                    }}
-                  >
+              <div className="items-wrap">
+                {todoItems.map((_t: any, _k: number) => {
+                  return (
                     <div
-                      style={{
-                        display: _t.status === t.type ? "flex" : "none",
-                      }}
-                      className={t.type === "done" ? "done" : "todo-item"}
                       key={_k}
+                      data-status={_t.status}
+                      draggable="true"
+                      onDragStart={(e) => {
+                        handleStart(e, _t);
+                      }}
                     >
-                      <input
-                        className="radio_type"
-                        type="checkbox"
-                        name="task"
-                        checked={t.type === "done" ? true : false}
-                        disabled={t.type === "done"}
-                        onChange={() => changeTaskStatus(_t, "done")}
-                      ></input>
-                      <div className="item-title">{_t.title}</div>
-                      {/* <div className="item">start time:{_t.startTime}</div> */}
+                      <div
+                        style={{
+                          display: _t.status === t.type ? "flex" : "none",
+                        }}
+                        className={t.type === "done" ? "done" : "todo-item"}
+                        key={_k}
+                      >
+                        <input
+                          className="radio_type"
+                          type="checkbox"
+                          name="task"
+                          checked={t.type === "done" ? true : false}
+                          disabled={t.type === "done"}
+                          onChange={() => changeTaskStatus(_t, "done")}
+                        ></input>
+                        <div className="item-title">{_t.title}</div>
+                        {/* <div className="item">start time:{_t.startTime}</div> */}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           );
         }
