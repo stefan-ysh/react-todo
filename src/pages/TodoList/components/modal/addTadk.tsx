@@ -1,9 +1,9 @@
 import { Modal, Form, Input } from "antd";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 function AddModal(props: any) {
-  useEffect(() => {
-    (document.getElementById("task-title") as any).onfocus();
-  }, []);
+  // useEffect(() => {
+  //   (document.getElementById("task-title") as any).onfocus();
+  // }, []);
 
   return (
     <Modal
