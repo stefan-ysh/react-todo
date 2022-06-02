@@ -262,13 +262,7 @@ function TodoList() {
       })}
       {/* add task button */}
       <Button
-        icon={
-          <PlusOutlined
-            style={{
-              fontSize: "20px",
-            }}
-          />
-        }
+        icon={<PlusOutlined className="add-task-plus-icon" />}
         className="add-task-btn"
         type="primary"
         onClick={showAddTaskModal}
