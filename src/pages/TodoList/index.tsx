@@ -9,7 +9,8 @@ import {
   FieldTimeOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import { Badge, message, Button, Modal, Form, Input, Checkbox } from "antd";
+import AddModal from "./components/modal/addTadk";
+import { Badge, message, Button } from "antd";
 
 const todoList: Array<TaskCategory> = [
   {
@@ -114,13 +115,13 @@ function TodoList() {
     setTodoItems([...list]);
     switch (type) {
       case "todo":
-        message.success("task moved to todo");
+        message.success("Set up a TODO successfully, do it now!");
         break;
       case "doing":
-        message.success("start doing");
+        message.success("Start doing, come on!");
         break;
       case "done":
-        message.success("finish");
+        message.success("Finish a task, congratulations!");
         break;
 
       default:
@@ -140,6 +141,9 @@ function TodoList() {
 
   // handle create task
   const handleCreateTask = () => {
+    if (!newTaskTitle) {
+      return message.warning("You should input the task title first");
+    }
     const newTask: TaskItem = {
       title: newTaskTitle,
       startTime: "2022-05-15",
@@ -148,6 +152,7 @@ function TodoList() {
     };
     list.push(newTask);
     setTodoItems([...list]);
+    changeTaskStatus(newTask, "todo");
     setVisible(false);
     setNewTaskTitle("");
   };
@@ -291,32 +296,13 @@ function TodoList() {
         type="primary"
         onClick={showAddTaskModal}
       ></Button>
-      <Modal
-        title="Create A New Task"
-        centered
-        visible={visible}
-        onOk={handleCreateTask}
-        onCancel={() => setVisible(false)}
-      >
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          initialValues={{ remember: true }}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="Task Title"
-            name="taskTitle"
-            rules={[{ required: true, message: "Please input your username!" }]}
-          >
-            <Input
-              onChange={(e) => inputNewTaskTitle(e)}
-              value={newTaskTitle}
-            />
-          </Form.Item>
-        </Form>
-      </Modal>
+      {visible && (
+        <AddModal
+          inputNewTaskTitle={inputNewTaskTitle}
+          handleCreateTask={handleCreateTask}
+          setVisible={setVisible}
+        />
+      )}
     </div>
   );
 }
