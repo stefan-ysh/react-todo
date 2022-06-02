@@ -1,4 +1,13 @@
-# Getting Started
+# Description
+This is a personal practice demo for learning react.
+
+## Features
+
+- Set up some tasks to do
+- Change the status of task to `doing` or `done`
+- Task tracking
+
+## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
