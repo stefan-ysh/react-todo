@@ -82,8 +82,13 @@ function TodoList() {
 
   // drop item
   const handleDrop = (e: any, t: { type: string }) => {
+    message.destroy();
     // get the status of current drag area
     let fromStatus = e.dataTransfer.getData("status");
+    // fromStatus is a string beacuse transfer-type
+    if (fromStatus === "undefined") {
+      return;
+    }
     const { type: targetStatus } = t;
     // do nothing if the status is the same
     // todo maybe need to change the order of current list item
@@ -108,6 +113,7 @@ function TodoList() {
 
   // change the status of the current item
   const changeTaskStatus = (t: any, type: string) => {
+    message.destroy();
     let res = list.find((l) => {
       return l.title === t.title;
     });
@@ -141,6 +147,7 @@ function TodoList() {
 
   // handle create task
   const handleCreateTask = () => {
+    message.destroy();
     if (!newTaskTitle) {
       return message.warning("You should input the task title first");
     }
