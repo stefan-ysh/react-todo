@@ -199,16 +199,10 @@ function TodoList() {
                 e.preventDefault();
               }}
             >
-              <div className="title-wrap">
+              <div className="category-wrap">
                 {t.type === "todo" && (
                   <Badge count={computeNum(t.type)}>
-                    <ClockCircleOutlined
-                      style={{
-                        fontSize: "20px",
-                        color: "#fff",
-                        marginRight: "10px",
-                      }}
-                    />
+                    <ClockCircleOutlined className="category-icon" />
                     <span className="category-title">
                       {t.type.toUpperCase()}
                     </span>
@@ -216,13 +210,7 @@ function TodoList() {
                 )}
                 {t.type === "done" && (
                   <Badge count={computeNum(t.type)}>
-                    <CheckCircleOutlined
-                      style={{
-                        fontSize: "20px",
-                        color: "#fff",
-                        marginRight: "10px",
-                      }}
-                    />
+                    <CheckCircleOutlined className="category-icon" />
                     <span className="category-title">
                       {t.type.toUpperCase()}
                     </span>
@@ -230,13 +218,7 @@ function TodoList() {
                 )}
                 {t.type === "doing" && (
                   <Badge count={computeNum(t.type)}>
-                    <FieldTimeOutlined
-                      style={{
-                        fontSize: "20px",
-                        color: "#fff",
-                        marginRight: "10px",
-                      }}
-                    />
+                    <FieldTimeOutlined className="category-icon" />
                     <span className="category-title">
                       {t.type.toUpperCase()}
                     </span>
@@ -262,9 +244,6 @@ function TodoList() {
                     >
                       <input
                         className="radio_type"
-                        // style={{
-                        //   display: t.type === "done" ? "block" : "none",
-                        // }}
                         type="checkbox"
                         name="task"
                         checked={t.type === "done" ? true : false}
@@ -290,17 +269,7 @@ function TodoList() {
             }}
           />
         }
-        style={{
-          width: "40px",
-          height: "40px",
-          position: "absolute",
-          bottom: "10px",
-          right: "10px",
-          borderRadius: "50%",
-          textAlign: "center",
-          lineHeight: "40px",
-          padding: 0,
-        }}
+        className="add-task-btn"
         type="primary"
         onClick={showAddTaskModal}
       ></Button>

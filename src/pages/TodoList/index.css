@@ -17,9 +17,14 @@
   border-top: none;
   border-bottom: none;
 }
-.title-wrap {
+.category-wrap {
   font-size: 20px;
   user-select: none;
+}
+.category-icon {
+  font-size: 20px;
+  color: #fff;
+  margin-right: 10px;
 }
 .category-title {
   font-size: 20px;
@@ -55,7 +60,7 @@
   background-color: grey;
   text-decoration: line-through;
   color: aliceblue;
-  opacity: .5;
+  opacity: 0.5;
 }
 .radio_type {
   width: 20px;
@@ -111,4 +116,15 @@
 }
 .radio_type:checked + label {
   color: #c59c5a;
+}
+.add-task-btn {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  padding: 0;
 }
