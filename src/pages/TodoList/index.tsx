@@ -47,7 +47,7 @@ const list: Array<TaskItem> = [
     title: "reading",
     startTime: "2022-05-15",
     description: "",
-    status: "done",
+    status: "todo",
   },
   {
     title: "cooking",
