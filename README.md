@@ -1,8 +1,16 @@
+<p align="center">
+  <a href="https://github.com/stefan-ysh/react-todo">
+    <img alt="React TodoList" height="64" src="./src/assets/doc/image/logo.svg">
+  </a>
+</p>
+<h1 align="center">React TodoList</h1>
 # Description
 
 This is a personal practice demo for learning react.
 
-![用户界面](./src/assets/doc/image/user-interface.png)
+![用户界面](./src/assets/doc/image/todo-list.gif)
+
+English | [简体中文](./README-zh_CN.md)
 
 ## Features
 
