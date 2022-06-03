@@ -4,10 +4,11 @@
   </a>
 </p>
 <h1 align="center">React TodoList</h1>
-
-# 项目描述
+<div align="center">
 
 这是一个学习 `react` 过程中产生的个人项目.
+
+</div>
 
 ![用户界面](./src/assets/doc/image/todo-list.gif)
 

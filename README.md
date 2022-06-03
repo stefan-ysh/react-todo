@@ -4,9 +4,11 @@
   </a>
 </p>
 <h1 align="center">React TodoList</h1>
-# Description
+<div align="center">
 
 This is a personal practice demo for learning react.
+
+</div>
 
 ![用户界面](./src/assets/doc/image/todo-list.gif)
 
