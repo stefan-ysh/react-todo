@@ -58,6 +58,10 @@
   border: 1px solid rgb(255, 255, 255);
   box-shadow: 3px 3px 3px rgb(226, 215, 215);
 }
+.todo-item:hover .del-task-btn,
+.done:hover .del-task-btn {
+  display: block;
+}
 .item-title {
   width: 100%;
   text-align: left;
@@ -140,4 +144,9 @@
 }
 .add-task-plus-icon {
   font-size: 20px;
+}
+.del-task-btn {
+  cursor: pointer;
+  display: none;
+  color: #f50000;
 }

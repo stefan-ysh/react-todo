@@ -9,10 +9,10 @@ import {
   CheckCircleOutlined,
   FieldTimeOutlined,
   PlusOutlined,
-  // DeleteOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import AddModal from "./components/modal/addTadk";
-import { Badge, message, Button } from "antd";
+import { Badge, message, Button, Popconfirm } from "antd";
 
 const todoList: Array<TaskCategory> = [
   {
@@ -94,7 +94,7 @@ function TodoList() {
   const changeTaskStatus = (t: any, type: string) => {
     message.destroy();
     let res = list.find((l) => {
-      return l.title === t.title;
+      return l.id === t.id;
     });
     res!.status = type;
     setTodoItems([...list]);
@@ -139,7 +139,7 @@ function TodoList() {
     };
     list.push(newTask);
     setTodoItems([...list]);
-    changeTaskStatus(newTask, "todo");
+    // changeTaskStatus(newTask, "todo");
     setVisible(false);
     setNewTaskTitle("");
   };
@@ -148,6 +148,17 @@ function TodoList() {
   const inputNewTaskTitle = (e: any) => {
     setNewTaskTitle(e.target.value);
   };
+
+  // delete the current task
+  const handleDeleteTask = (task: TaskItem) => {
+    let i = list.findIndex((l, index) => {
+      return l.id === task.id;
+    });
+    list.splice(i, 1);
+    setTodoItems([...list]);
+    message.success("Click on Yes");
+  };
+
   return (
     <div className="todo-list">
       {todoList.map((t: any, k: number) => {
@@ -235,7 +246,18 @@ function TodoList() {
                         <div className="item-title" title={_t.title}>
                           {_t.title}
                         </div>
-                        {/* <DeleteOutlined /> */}
+                        <Popconfirm
+                          title="Are you sure to delete this task?"
+                          onConfirm={() => handleDeleteTask(_t)}
+                          okText="Confirm"
+                          cancelText="Cancel"
+                        >
+                          <DeleteOutlined
+                            title="删除任务"
+                            className="del-task-btn"
+                          />
+                        </Popconfirm>
+
                         {/* <div className="item">start time:{_t.startTime}</div> */}
                       </div>
                     </div>
