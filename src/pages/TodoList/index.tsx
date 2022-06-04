@@ -9,6 +9,7 @@ import {
   CheckCircleOutlined,
   FieldTimeOutlined,
   PlusOutlined,
+  // DeleteOutlined,
 } from "@ant-design/icons";
 import AddModal from "./components/modal/addTadk";
 import { Badge, message, Button } from "antd";
@@ -217,6 +218,8 @@ function TodoList() {
                       <div
                         style={{
                           display: _t.status === t.type ? "flex" : "none",
+                          justifyContent: "space-between",
+                          padding: "0 10px",
                         }}
                         className={t.type === "done" ? "done" : "todo-item"}
                         key={_k}
@@ -229,7 +232,10 @@ function TodoList() {
                           disabled={t.type === "done"}
                           onChange={() => changeTaskStatus(_t, "done")}
                         ></input>
-                        <div className="item-title">{_t.title}</div>
+                        <div className="item-title" title={_t.title}>
+                          {_t.title}
+                        </div>
+                        {/* <DeleteOutlined /> */}
                         {/* <div className="item">start time:{_t.startTime}</div> */}
                       </div>
                     </div>

@@ -30,7 +30,7 @@
   font-size: 20px;
   color: aliceblue;
 }
-.items-wrap{
+.items-wrap {
   /* height: 100%; */
   height: calc(100vh - 50px);
   overflow: auto;
@@ -41,12 +41,12 @@
   width: 100%;
   /* max-width: 400px; */
   text-align: left;
-  height: 100px;
+  height: 50px;
   background: rgb(134, 194, 243);
   margin-top: 10px;
   /* border: 1px solid red; */
   text-align: center;
-  line-height: 100px;
+  line-height: 50px;
   font-size: 20px;
   transition: all 0.5s;
   align-items: center;
@@ -59,7 +59,12 @@
   box-shadow: 3px 3px 3px rgb(226, 215, 215);
 }
 .item-title {
+  width: 100%;
   text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0 10px;
 }
 .done {
   background-color: grey;
