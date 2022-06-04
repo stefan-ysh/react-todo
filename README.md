@@ -6,55 +6,51 @@
 <h1 align="center">React TodoList</h1>
 <div align="center">
 
-This is a personal practice demo for learning react.
+这是一个学习 `react` 过程中产生的个人项目.
 
 </div>
 
 ![用户界面](./src/assets/doc/image/todo-list.gif)
 
-English | [简体中文](./README-zh_CN.md)
+[English](./README-en_US.md) | 简体中文
 
-## Features
+## 特性
 
-✅ Task item can be dragged and dropped.
+✅ 任务支持拖拽来改变状态.
 
-✅ Set up some tasks to do
+✅ 创建任务
 
-✅ Change the status of task to `doing` or `done`
+✅ 删除任务
 
-✅ Task tracking
+✅ 改变任务状态为进行中或者完成
 
-✅ Block the status when the task is done.
+✅ 任务跟踪
+
+✅ 当一个项目完成后进行状态锁定
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
 
-## Available Scripts
+## 脚本
 
-In the project directory, you can run:
+在项目根目录运行如下命令：
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+在开发模式下运行应用，打开 [http://localhost:3000](http://localhost:3000) 在浏览器预览。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+修改代码后，页面会重载，也可以在控制台看到任何错误提示.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.
+在交互式监视模式下启动测试运行程序.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+将用于生产的应用程序生成到`build`文件夹，它可以在生产模式下正确地捆绑 React，并优化构建以获得最佳性能。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 支持环境
 
-## Browsers support
-
-Modern browsers.
+现代浏览器。
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
