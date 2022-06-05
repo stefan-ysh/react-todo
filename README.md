@@ -16,17 +16,17 @@
 
 ## 特性
 
-✅ 任务支持拖拽来改变状态.
++ [x] 任务支持拖拽来改变状态.
 
-✅ 创建任务
++ [x] 创建任务
 
-✅ 删除任务
++ [x] 删除任务
 
-✅ 改变任务状态为进行中或者完成
++ [x] 改变任务状态为进行中或者完成
 
-✅ 任务跟踪
++ [x] 任务跟踪
 
-✅ 当一个项目完成后进行状态锁定
++ [x] 当一个项目完成后进行状态锁定
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
 
