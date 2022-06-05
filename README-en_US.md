@@ -16,17 +16,17 @@ English | [简体中文](./README.md)
 
 ## Features
 
-✅ Task item can be dragged and dropped.
++ [x] Task item can be dragged and dropped.
 
-✅ Create task
++ [x] Create task
 
-✅ Delete task
++ [x] Delete task
 
-✅ Change the status of task to `doing` or `done`
++ [x] Change the status of task to `doing` or `done`
 
-✅ Task tracking
++ [x] Task tracking
 
-✅ Block the status when the task is done.
++ [x] Block the status when the task is done.
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
 
