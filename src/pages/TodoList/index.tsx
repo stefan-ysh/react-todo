@@ -106,7 +106,7 @@ function TodoList() {
         message.success("Start doing, come on!");
         break;
       case "done":
-        message.success("Finish a task, congratulations!");
+        message.success("Finish a task, congratulations! 🎉");
         break;
 
       default:
@@ -156,7 +156,7 @@ function TodoList() {
     });
     list.splice(i, 1);
     setTodoItems([...list]);
-    message.success("Click on Yes");
+    message.success("Delete task successfully!");
   };
 
   return (
