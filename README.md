@@ -28,6 +28,8 @@
 
 + [x] 当一个项目完成后进行状态锁定
 
++ [x] 任务进度显示
+
 + [ ] 客户端
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->

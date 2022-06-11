@@ -28,6 +28,8 @@ English | [简体中文](./README.md)
 
 + [x] Block the status when the task is done.
 
++ [x] task progress
+
 + [ ] Client
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
