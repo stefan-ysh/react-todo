@@ -4,6 +4,8 @@ import "./index.css";
 import { TaskItem, TaskCategory } from "./types/todo";
 import EmptyTip from "./components/empty";
 import Progress from "./components/progress";
+import moment from "moment";
+
 import {
   ClockCircleOutlined,
   CheckCircleOutlined,
@@ -90,27 +92,35 @@ function TodoList() {
   };
 
   // change the status of the current item
-  const changeTaskStatus = (t: any, type: string) => {
+  const changeTaskStatus = (t: any, toStatus: string) => {
+    const fromStatus = t.status;
     message.destroy();
     let res = list.find((l) => {
       return l.id === t.id;
     });
-    res!.status = type;
-    setTodoItems([...list]);
-    switch (type) {
+    switch (toStatus) {
+      // In theory it won't go here
       case "todo":
         message.success("Set up a TODO successfully, do it now!");
         break;
       case "doing":
+        res!.startTime = moment().format("YYYY-MM-DD");
         message.success("Start doing, come on!");
         break;
       case "done":
+        // set the start time is current time if the task is dragged from todo to done
+        if (fromStatus === "todo") {
+          res!.startTime = moment().format("YYYY-MM-DD");
+        }
+        res!.endTime = moment().format("YYYY-MM-DD");
         message.success("Finish a task, congratulations! 🎉");
         break;
 
       default:
         break;
     }
+    res!.status = toStatus;
+    setTodoItems([...list]);
     setCurItem(undefined);
   };
   const isEmpty = (type: string) => {
