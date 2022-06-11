@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./index.css";
 import { TaskItem, TaskCategory } from "./types/todo";
 import EmptyTip from "./components/empty";
+import Progress from "./components/progress";
 import { uuid } from "../../utils";
 import {
   ClockCircleOutlined,
@@ -226,40 +227,44 @@ function TodoList() {
                         handleStart(e, _t);
                       }}
                     >
-                      <div
-                        style={{
-                          display: _t.status === t.type ? "flex" : "none",
-                          justifyContent: "space-between",
-                          padding: "0 10px",
-                        }}
-                        className={t.type === "done" ? "done" : "todo-item"}
-                        key={_k}
-                      >
-                        <input
-                          className="radio_type"
-                          type="checkbox"
-                          name="task"
-                          checked={t.type === "done" ? true : false}
-                          disabled={t.type === "done"}
-                          onChange={() => changeTaskStatus(_t, "done")}
-                        ></input>
-                        <div className="item-title" title={_t.title}>
-                          {_t.title}
-                        </div>
-                        <Popconfirm
-                          title="Are you sure to delete this task?"
-                          onConfirm={() => handleDeleteTask(_t)}
-                          okText="Confirm"
-                          cancelText="Cancel"
+                      {_t.status === t.type && (
+                        <div
+                          style={{
+                            justifyContent: "space-between",
+                            padding: "0 10px",
+                          }}
+                          className={t.type === "done" ? "done" : "todo-item"}
+                          key={_k}
                         >
-                          <DeleteOutlined
-                            title="删除任务"
-                            className="del-task-btn"
-                          />
-                        </Popconfirm>
+                          <input
+                            className="radio_type"
+                            type="checkbox"
+                            name="task"
+                            checked={t.type === "done" ? true : false}
+                            disabled={t.type === "done"}
+                            onChange={() => changeTaskStatus(_t, "done")}
+                          ></input>
+                          <div className="item-title" title={_t.title}>
+                            {_t.title}
+                          </div>
+                          <div style={{ display: "flex" }}>
+                            {_t.status === "doing" && <Progress task={_t} />}
+                          </div>
+                          <Popconfirm
+                            title="Are you sure to delete this task?"
+                            onConfirm={() => handleDeleteTask(_t)}
+                            okText="Confirm"
+                            cancelText="Cancel"
+                          >
+                            <DeleteOutlined
+                              title="删除任务"
+                              className="del-task-btn"
+                            />
+                          </Popconfirm>
 
-                        {/* <div className="item">start time:{_t.startTime}</div> */}
-                      </div>
+                          {/* <div className="item">start time:{_t.startTime}</div> */}
+                        </div>
+                      )}
                     </div>
                   );
                 })}
