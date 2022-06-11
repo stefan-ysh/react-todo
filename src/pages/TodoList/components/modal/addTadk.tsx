@@ -36,6 +36,7 @@ function AddModal(props: any) {
       startTime: null,
       status: "todo",
       description,
+      createdTime: moment().format("YYYY-MM-DD HH:mm:ss"),
     });
     message.success("add task successfully");
   };
