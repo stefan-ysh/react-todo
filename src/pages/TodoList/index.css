@@ -37,6 +37,7 @@
 }
 .todo-item,
 .done {
+  position: relative;
   padding: 0 5px;
   width: 100%;
   /* max-width: 400px; */
@@ -149,5 +150,10 @@
 .del-task-btn {
   cursor: pointer;
   visibility: hidden;
-  color: #f50000;
+  color: red;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 10px;
+  font-weight: 900;
 }

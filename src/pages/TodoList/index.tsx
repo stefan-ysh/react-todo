@@ -11,7 +11,8 @@ import {
   CheckCircleOutlined,
   FieldTimeOutlined,
   PlusOutlined,
-  DeleteOutlined,
+  // DeleteOutlined,
+  CloseCircleTwoTone,
 } from "@ant-design/icons";
 import AddModal from "./components/modal/addTadk";
 import { Badge, message, Button, Popconfirm } from "antd";
@@ -239,7 +240,9 @@ function TodoList() {
                             {_t.title}
                           </div>
                           <div style={{ display: "flex" }}>
-                            {_t.status === "doing" && <TaskProgress task={_t} />}
+                            {_t.status === "doing" && (
+                              <TaskProgress task={_t} />
+                            )}
                           </div>
                           <Popconfirm
                             title="Are you sure to delete this task?"
@@ -247,7 +250,7 @@ function TodoList() {
                             okText="Confirm"
                             cancelText="Cancel"
                           >
-                            <DeleteOutlined
+                            <CloseCircleTwoTone
                               title="删除任务"
                               className="del-task-btn"
                             />
