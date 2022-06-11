@@ -1,3 +1,7 @@
 .progress-wrap {
+  display: flex;
+  align-items: center;
+}
+.progress {
   width: 100px;
 }

@@ -4,7 +4,6 @@ import "./index.css";
 import { TaskItem, TaskCategory } from "./types/todo";
 import EmptyTip from "./components/empty";
 import Progress from "./components/progress";
-import { uuid } from "../../utils";
 import {
   ClockCircleOutlined,
   CheckCircleOutlined,
@@ -35,7 +34,6 @@ function TodoList() {
   const [curItem, setCurItem] = useState(undefined);
   const [todoItems, setTodoItems] = useState(list);
   const [visible, setVisible] = useState(false);
-  const [newTaskTitle, setNewTaskTitle] = useState("");
 
   useEffect(() => {
     localStorage.setItem("todoItems", JSON.stringify(todoItems));
@@ -126,28 +124,11 @@ function TodoList() {
   };
 
   // handle create task
-  const handleCreateTask = () => {
+  const handleCreateTask = (newTask: TaskItem) => {
     message.destroy();
-    if (!newTaskTitle) {
-      return message.warning("You should input the task title first");
-    }
-    const newTask: TaskItem = {
-      title: newTaskTitle,
-      id: uuid(),
-      startTime: "2022-05-15",
-      description: "",
-      status: "todo",
-    };
     list.push(newTask);
     setTodoItems([...list]);
-    // changeTaskStatus(newTask, "todo");
     setVisible(false);
-    setNewTaskTitle("");
-  };
-
-  // update the newTaskTitle when inputing the value
-  const inputNewTaskTitle = (e: any) => {
-    setNewTaskTitle(e.target.value);
   };
 
   // delete the current task
@@ -281,11 +262,7 @@ function TodoList() {
         onClick={showAddTaskModal}
       ></Button>
       {visible && (
-        <AddModal
-          inputNewTaskTitle={inputNewTaskTitle}
-          handleCreateTask={handleCreateTask}
-          setVisible={setVisible}
-        />
+        <AddModal handleCreateTask={handleCreateTask} setVisible={setVisible} />
       )}
     </div>
   );

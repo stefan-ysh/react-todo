@@ -61,7 +61,7 @@
 }
 .todo-item:hover .del-task-btn,
 .done:hover .del-task-btn {
-  display: block;
+  visibility: visible;
 }
 .item-title {
   width: 100%;
@@ -148,6 +148,6 @@
 }
 .del-task-btn {
   cursor: pointer;
-  display: none;
+  visibility: hidden;
   color: #f50000;
 }

@@ -1,7 +1,10 @@
 interface TaskItem {
   id: string;
   title: string;
-  startTime: Date | string | any;
+  startTime: string | null;
+  endTime: string | null;
+  planStartTime: string;
+  planEndTime: string;
   description: string;
   status: string;
 }

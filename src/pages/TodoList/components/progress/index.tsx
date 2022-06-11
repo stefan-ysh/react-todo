@@ -5,8 +5,8 @@ function Progress(props: any) {
   console.log(props.task.startTime);
 
   return (
-    <div>
-      <progress className="progress-wrap" max={100} value={val} />
+    <div className="progress-wrap">
+      <progress className="progress" max={100} value={val} />
     </div>
   );
 }
