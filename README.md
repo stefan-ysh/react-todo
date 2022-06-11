@@ -14,45 +14,57 @@
 
 [English](./README-en_US.md) | 简体中文
 
-## 特性
+## ✨ 特性
 
-+ [x] 任务支持拖拽来改变状态.
+- [x] 任务支持拖拽来改变状态.
 
-+ [x] 创建任务
+- [x] 创建任务
 
-+ [x] 删除任务
+- [x] 删除任务
 
-+ [x] 改变任务状态为进行中或者完成
+- [x] 改变任务状态为进行中或者完成
 
-+ [x] 任务跟踪
+- [x] 任务跟踪
 
-+ [x] 当一个项目完成后进行状态锁定
+- [x] 当一个项目完成后进行状态锁定
 
-+ [x] 任务进度显示
+- [x] 任务进度显示
 
-+ [ ] 客户端
+- [ ] 客户端
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
 
-## 脚本
+## 🚀 开始
 
-在项目根目录运行如下命令：
+### 克隆
 
-### `npm start`
+```shell
+git clone https://github.com/stefan-ysh/react-todo.git
+```
 
-在开发模式下运行应用，打开 [http://localhost:3000](http://localhost:3000) 在浏览器预览。
+### 安装依赖
 
-修改代码后，页面会重载，也可以在控制台看到任何错误提示.
+```shell
+npm install
+```
 
-### `npm test`
+### 启动
 
-在交互式监视模式下启动测试运行程序.
+在开发模式下运行应用，打开 [http://localhost:3000](http://localhost:3000) 在浏览器预览
 
-### `npm run build`
+```shell
+npm start
+```
 
-将用于生产的应用程序生成到`build`文件夹，它可以在生产模式下正确地捆绑 React，并优化构建以获得最佳性能。
+### 打包
 
-## 支持环境
+将用于生产的应用程序生成到`build`文件夹
+
+```shell
+npm run build
+```
+
+## 🖥 支持环境
 
 现代浏览器。
 

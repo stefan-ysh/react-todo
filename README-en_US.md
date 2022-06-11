@@ -14,51 +14,58 @@ This is a personal practice demo for learning react.
 
 English | [简体中文](./README.md)
 
-## Features
+## ✨ Features
 
-+ [x] Task item can be dragged and dropped.
+- [x] Task item can be dragged and dropped.
 
-+ [x] Create task
+- [x] Create task
 
-+ [x] Delete task
+- [x] Delete task
 
-+ [x] Change the status of task to `doing` or `done`
+- [x] Change the status of task to `doing` or `done`
 
-+ [x] Task tracking
+- [x] Task tracking
 
-+ [x] Block the status when the task is done.
+- [x] Block the status when the task is done.
 
-+ [x] task progress
+- [x] task progress
 
-+ [ ] Client
+- [ ] Client
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
 
-## Available Scripts
+## 🚀 Get started
 
-In the project directory, you can run:
+### Clone
 
-### `npm start`
+```shell
+git clone https://github.com/stefan-ysh/react-todo.git
+```
+
+### Install
+
+```shell
+npm install
+```
+
+### Run
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.The page will reload if you make edits
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```shell
+npm start
+```
 
-### `npm test`
+### Build
 
-Launches the test runner in the interactive watch mode.
+Builds the app for production to the `build` folder.
 
-### `npm run build`
+```shell
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-## Browsers support
+## 🖥 Browsers support
 
 Modern browsers.
 
