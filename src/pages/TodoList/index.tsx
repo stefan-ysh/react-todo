@@ -212,9 +212,10 @@ function TodoList() {
                 {todoItems.map((_t: any, _k: number) => {
                   return (
                     <div
+                      className="item"
                       key={_k}
                       data-status={_t.status}
-                      draggable="true"
+                      draggable={_t.status === "done" ? "false" : "true"}
                       onDragStart={(e) => {
                         handleStart(e, _t);
                       }}

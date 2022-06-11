@@ -35,6 +35,9 @@
   height: calc(100vh - 50px);
   overflow: auto;
 }
+.item{
+  user-select: none;
+}
 .todo-item,
 .done {
   position: relative;
