@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./index.css";
 import { TaskItem, TaskCategory } from "./types/todo";
 import EmptyTip from "./components/empty";
-import Progress from "./components/progress";
+import TaskProgress from "./components/progress";
 import moment from "moment";
 
 import {
@@ -239,7 +239,7 @@ function TodoList() {
                             {_t.title}
                           </div>
                           <div style={{ display: "flex" }}>
-                            {_t.status === "doing" && <Progress task={_t} />}
+                            {_t.status === "doing" && <TaskProgress task={_t} />}
                           </div>
                           <Popconfirm
                             title="Are you sure to delete this task?"
