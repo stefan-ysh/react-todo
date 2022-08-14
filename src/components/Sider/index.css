@@ -11,9 +11,9 @@
 .menu-item {
   padding: 10px;
   font-size: 20px;
-  transition: all .5s;
+  transition: all 0.5s;
 }
-.menu-item:hover{
-    background: rgb(126, 112, 114);
-    color:#fff
+.menu-item:hover {
+  background: rgb(126, 112, 114);
+  color: #fff;
 }

@@ -5,12 +5,13 @@ import { TaskItem, TaskCategory } from "./types/todo";
 import EmptyTip from "./components/empty";
 import TaskProgress from "./components/progress";
 import moment from "moment";
-
+import ActionCalendar from "./components/action-calendar";
 import {
   ClockCircleOutlined,
   CheckCircleOutlined,
   FieldTimeOutlined,
   PlusOutlined,
+  PieChartOutlined,
   // DeleteOutlined,
   CloseCircleTwoTone,
 } from "@ant-design/icons";
@@ -37,6 +38,7 @@ function TodoList() {
   const [curItem, setCurItem] = useState(undefined);
   const [todoItems, setTodoItems] = useState(list);
   const [visible, setVisible] = useState(false);
+  const [taskWall, setTaskWall] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("todoItems", JSON.stringify(todoItems));
@@ -274,6 +276,20 @@ function TodoList() {
         className="add-task-btn"
         type="primary"
         onClick={showAddTaskModal}
+      ></Button>
+      {taskWall && (
+        <ActionCalendar
+          closeDrawer={(e: boolean) => setTaskWall(e)}
+          visible={taskWall}
+        />
+      )}
+      <Button
+        icon={<PieChartOutlined />}
+        className="show-tasks-btn"
+        type="primary"
+        onClick={() => {
+          setTaskWall(true);
+        }}
       ></Button>
       {visible && (
         <AddModal handleCreateTask={handleCreateTask} setVisible={setVisible} />

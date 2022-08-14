@@ -3,7 +3,6 @@ import "./App.css";
 // import Header from "./components/Header";
 // import Sider from "./components/Sider";
 import Content from "./components/Content";
-
 function App() {
   return (
     <div className="app">

@@ -35,7 +35,7 @@
   height: calc(100vh - 50px);
   overflow: auto;
 }
-.item{
+.item {
   user-select: none;
 }
 .todo-item,
@@ -88,6 +88,7 @@
   position: relative;
   margin-right: 10px;
   border-radius: 50%;
+  background-color: rgb(255, 255, 255);
 }
 .radio_type:before {
   content: "";
@@ -136,20 +137,26 @@
 .radio_type:checked + label {
   color: #c59c5a;
 }
-.add-task-btn {
+.add-task-btn,
+.show-tasks-btn {
   width: 40px;
   height: 40px;
   position: absolute;
   bottom: 10px;
-  right: 10px;
   border-radius: 50%;
   text-align: center;
   line-height: 40px;
   padding: 0;
 }
-.add-task-plus-icon {
-  font-size: 20px;
+.add-task-btn {
+  right: 10px;
 }
+.show-tasks-btn {
+  right: 60px;
+}
+/* .add-task-plus-icon {
+  font-size: 20px;
+} */
 .del-task-btn {
   cursor: pointer;
   visibility: hidden;

@@ -2,6 +2,7 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import "./mock/index";
 import reportWebVitals from "./reportWebVitals";
 // import { BrowserRouter } from "react-router-dom";
 const { BrowserRouter } = require("react-router-dom");
