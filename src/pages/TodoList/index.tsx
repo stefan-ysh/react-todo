@@ -1,7 +1,7 @@
 /**eslint-disable */
 import { useState, useEffect } from "react";
 import "./index.css";
-import { TaskItem, TaskCategory } from "./types/todo";
+import { TaskItem, TaskCategory } from "./types";
 import EmptyTip from "./components/empty";
 import TaskProgress from "./components/progress";
 import moment from "moment";
